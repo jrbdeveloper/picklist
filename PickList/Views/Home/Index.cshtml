@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Pick List Sample</h1><hr />
+
+<div class="container">
+    <div id="picklist"></div>
+</div>
+
+<script src="~/Scripts/Widgets/picklist.widget.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#picklist").PickList({ ListLocation: "" });
+    });
+</script>

@@ -68,9 +68,9 @@
 
         if (this.options.ListLocation != "") {
             var inactive = this._getModel(null, this.options.ListLocation, false);
-
+            console.log(JSON.stringify(inactive));
             $.each(inactive, function (index, item) {
-                $("#InactiveItems").append(self._createOption(item.ID, item.Model));
+                $("#InactiveItems").append(self._createOption(item.Value, item.Text));
             });
         }        
     },

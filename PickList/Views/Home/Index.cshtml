@@ -5,12 +5,16 @@
 <h1>Pick List Sample</h1><hr />
 
 <div class="container">
-    <div id="picklist"></div>
+    <div id="picklist" class="picklist"></div>
 </div>
 
 <script src="~/Scripts/Widgets/picklist.widget.js"></script>
 <script>
     $(document).ready(function () {
-        $("#picklist").PickList({ ListLocation: "/home/GetList" });
+        $("#picklist").PickList({
+            ListLocation: "/home/GetList",
+            ActiveLabel: "Active",
+            InactiveLabel: "Inactive"
+        });
     });
 </script>

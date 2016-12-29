@@ -24,6 +24,16 @@ namespace PickList.Controllers
             return View();
         }
 
+        public ActionResult Code()
+        {
+            return View();
+        }
+
+        public ActionResult Download()
+        {
+            return View();
+        }
+
         public JsonResult GetList()
         {
             var data = getData();

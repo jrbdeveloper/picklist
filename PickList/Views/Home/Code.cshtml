@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Code";
+}
+
+<h1>Code</h1><hr />
+
+<p>* Requires jQuery & jQuery UI</p>
+
+<div class="container">
+<pre id="data-version" class="col-lg-5">
+<code class="language-html" data-lang="html">
+&lt;div class="container"&gt;
+    &lt;div id="picklist" class="picklist">&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src="/scripts/widgets/picklist.widget.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $(document).ready(function () {
+        var data = [
+            { Value: "1", Text: "Mexican" },
+            { Value: "2", Text: "Itialian" },
+            { Value: "3", Text: "Tai" },
+            { Value: "4", Text: "Japanese" },
+            { Value: "5", Text: "Chinese" },
+            { Value: "6", Text: "Indian" },
+            { Value: "7", Text: "American" },
+            { Value: "8", Text: "French" },
+        ];
+
+        $("#picklist").PickList({
+            Data: data,
+            ActiveLabel: "Active",
+            InactiveLabel: "Inactive"
+        });
+    });
+&lt;/script&gt;
+</code>
+</pre>
+
+<pre id="ajax-version" class="col-lg-5 pull-right">
+<code class="language-html" data-lang="html">
+&lt;div class="container"&gt;
+    &lt;div id="picklist" class="picklist">&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src="/scripts/widgets/picklist.widget.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $(document).ready(function () {
+        $("#picklist").PickList({
+            Ajax: {
+                url: "/home/GetList",
+                data: ""
+            },
+            ActiveLabel: "Active",
+            InactiveLabel: "Inactive"
+        });
+    });
+&lt;/script&gt;
+</code>
+</pre>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#ajax-version").height($("#data-version").height());
+    });
+</script>

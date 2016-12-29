@@ -11,8 +11,23 @@
 <script src="~/Scripts/Widgets/picklist.widget.js"></script>
 <script>
     $(document).ready(function () {
+        var data = [
+            { Value: "1", Text: "Mexican" },
+            { Value: "2", Text: "Itialian" },
+            { Value: "3", Text: "Tai" },
+            { Value: "4", Text: "Japanese" },
+            { Value: "5", Text: "Chinese" },
+            { Value: "6", Text: "Indian" },
+            { Value: "7", Text: "American" },
+            { Value: "8", Text: "French" },
+        ];
+
         $("#picklist").PickList({
-            ListLocation: "/home/GetList",
+            //Ajax: {
+            //    url: "/home/GetList",
+            //    data: ""
+            //},
+            Data: data,
             ActiveLabel: "Active",
             InactiveLabel: "Inactive"
         });

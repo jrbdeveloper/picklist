@@ -1,8 +1,12 @@
 ﻿$.widget("widgets.PickList", {
     options: {
-        ListLocation: "",
         ActiveLabel: "",
-        InactiveLabel: ""
+        InactiveLabel: "",
+        Ajax: {
+            url: "",
+            data: ""
+        },
+        Data: []
     },
 
     _init: function () {
@@ -77,11 +81,18 @@
 
     _loadList: function () {
         var self = this;
+        var list = [];
+                
+        if (self.options.Data.length > 0) {
+            list = self.options.Data;
+        }
 
-        if (this.options.ListLocation != "") {
-            var inactive = this._getModel(null, this.options.ListLocation, false);
+        if (this.options.Ajax.url != "") {
+            list = this._getModel(this.options.Ajax, false);
+        }
 
-            $.each(inactive, function (index, item) {
+        if (list.length > 0) {
+            $.each(list, function (index, item) {
                 $("#InactiveItems").append(self._createControl({ type: "option", value: item.Value, text: item.Text }));
             });
         }
@@ -113,14 +124,14 @@
         });
     },
 
-    _getModel: function (data, api, async) {
+    _getModel: function (ajax, async) {
         var ret;
-
+        
         $.ajax({
             method: "GET",
-            url: api,
+            url: ajax.url,
             dataType: "json",
-            data: data != null ? data : "",
+            data: ajax.data,
             async: async,
         }).done(function (result) {
             ret = result;

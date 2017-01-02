@@ -150,20 +150,24 @@
     },
 
     _createControl: function (props) {
-        var control = document.createElement(props.type);
+        if (props.type != '') {
+            var control = document.createElement(props.type);
 
-        $(control).prop("name", props.name);
-        $(control).prop("id", props.id);
-        $(control).prop("class", props.cssClass);
-        $(control).prop("value", props.value);
-        $(control).prop("text", props.text);
-        $(control).prop("multiple", props.multiple);
-        $(control).val(props.value);
+            $(control).prop("name", props.name);
+            $(control).prop("id", props.id);
+            $(control).prop("class", props.cssClass);
+            $(control).prop("value", props.value);
+            $(control).prop("text", props.text);
+            $(control).prop("multiple", props.multiple);
+            $(control).val(props.value);
 
-        if (props.type == "label" || props.type == "button") {
-            $(control).html(props.text);
+            if (props.type == "label" || props.type == "button") {
+                $(control).html(props.text);
+            }
+
+            return control;
         }
-
-        return control;
+        
+        return undefined;
     },
 });
